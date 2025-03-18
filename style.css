@@ -1,0 +1,200 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    overflow-x: hidden;
+    background: #0a0a0a;
+}
+
+/* Import Handwritten Font */
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+
+/* Animated Gradient Background */
+.animated-gradient-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #fbc2eb, #ff9a9e);
+    background-size: 400% 400%;
+    animation: gradientAnimation 30s ease infinite, changeGradient 60s ease infinite, fadeInOut 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes changeGradient {
+    0% { background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #fbc2eb, #ff9a9e); }
+    25% { background: linear-gradient(45deg, #a18cd1, #fbc2eb, #ff9a9e, #fad0c4, #a6c1ee, #a18cd1); }
+    50% { background: linear-gradient(45deg, #fbc2eb, #a6c1ee, #ff9a9e, #a18cd1, #fad0c4, #fbc2eb); }
+    75% { background: linear-gradient(45deg, #a6c1ee, #ff9a9e, #a18cd1, #fbc2eb, #fad0c4, #a6c1ee); }
+    100% { background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee, #fbc2eb, #ff9a9e); }
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Container */
+.container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Creative Headline Styling */
+header h1 {
+    font-size: 4rem; /* Adjust size as needed */
+    margin-bottom: 10px;
+    font-family: 'Parisienne', cursive; /* Billabong-like font */
+    color: #fff;
+    text-align: center;
+    animation: glow 2s ease-in-out infinite, float 3s ease-in-out infinite;
+    position: relative;
+    display: inline-block;
+}
+
+/* Glow & Neon Effect */
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #ff9a9e, 0 0 10px #ff9a9e, 0 0 20px #ff9a9e, 0 0 40px #ff9a9e; }
+    50% { text-shadow: 0 0 10px #fbc2eb, 0 0 20px #fbc2eb, 0 0 40px #fbc2eb, 0 0 80px #fbc2eb; }
+    100% { text-shadow: 0 0 5px #ff9a9e, 0 0 10px #ff9a9e, 0 0 20px #ff9a9e, 0 0 40px #ff9a9e; }
+}
+
+/* Floating Effect */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Fade-in Effect for Subtitle */
+header .subtitle {
+    font-size: 1.8rem;
+    color: #ddd;
+    text-shadow: 0 0 5px #80ffdb;
+    opacity: 0;
+    animation: fadeIn 2s ease-in-out 1s forwards; /* Delayed to start after headline */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Song Player */
+.song-player {
+    margin: 30px 0;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: zoomIn 1s ease-in-out 2s forwards; /* Delayed to start after subtitle */
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#play-button {
+    background: #80ffdb;
+    color: #0a0a0a;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 10px #80ffdb, 0 0 20px #80ffdb;
+}
+
+#play-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px #80ffdb, 0 0 40px #80ffdb;
+}
+
+/* Shake and Fade-in Effect for Memory Items */
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    padding: 25px;
+}
+
+.memory-item {
+    background: transparent; /* Removed semi-transparent background */
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px); /* Optional: Remove if you don't want blur */
+    box-shadow: 0 0 10px rgba(128, 255, 219, 0.2); /* Optional: Adjust or remove shadow */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: shakeAndFadeIn 1s ease-in-out 3s forwards; /* Delayed to start after song player */
+}
+
+@keyframes shakeAndFadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    50% { transform: translateY(-10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.media-container {
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.media-container img, .media-container video {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.media-container img:hover, .media-container video:hover {
+    transform: scale(1.1);
+}
+
+.memory-item p {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    color: #ddd;
+}
+
+/* Fade-in Effect for Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: transparent; /* Removed semi-transparent black background */
+    padding: 15px;
+    font-size: 1rem;
+    text-shadow: 0 0 5px #80ffdb;
+    backdrop-filter: blur(10px); /* Optional: Remove if you don't want blur */
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 4s forwards; /* Delayed to start after memory items */
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .memory-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .memory-item p {
+        font-size: 1rem;
+    }
+}
